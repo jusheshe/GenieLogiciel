@@ -1,9 +1,11 @@
+package fr.ufrsciencestech.panier;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package fr.ufrsciencestech.panier;
+
 
 /**
  *
@@ -14,11 +16,15 @@ public class Orange {
     private double prix;
     private String origine;
     
+    public Orange()
+    {
+        prix = -1;
+        origine = "";
+    }
+    
     public Orange(double p, String o)
     {
-        if(p<0)
-            System.out.println("Impossible d'entrer un prix négatif");
-        else
+        if(p>0)
         {
             prix = p;
             origine = o;

@@ -8,16 +8,26 @@ public class App
 {
     public static void main( String[] args )
     {
-        Orange o1 = new Orange(12,"france");
-        Orange o2 = new Orange(3,"france");
-        Orange o3 = new Orange(12,"france");
-        Panier p1 = new Panier(10);
-        p1.AjoutOrange(o1);
-        p1.AjoutOrange(o2);
-        Panier p2 = new Panier(5);
-        p2.AjoutOrange(o1);
-        p2.AjoutOrange(o2);
-        boolean b = p1.equals(p2);
-        System.out.println(b);
+        // Panier courant
+        Panier p = new Panier(10);
+        
+        // Vue console + l'ajoute au panier
+        VueConsole vc = new VueConsole();
+        p.addObserver(vc);
+        
+        // Vue graphique + l'ajoute au panier
+        VueGraphique vg = new VueGraphique();
+        p.addObserver(vg);
+        
+        // Controleur
+        Controleur cs = new Controleur();
+        cs.setPanier(p);
+        cs.setVue(vg);
+        
+        // Ajoute le controleur à la vue graphique
+        vg.addControleur(cs);
+        
+        vg.setVisible(true);
+        vg.pack();
     }
 }
